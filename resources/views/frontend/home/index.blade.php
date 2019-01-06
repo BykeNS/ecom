@@ -61,7 +61,7 @@
 			<div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
 				<ul class="resp-tabs-list">
 					<li class="resp-tab-item" aria-controls="tab_item-0" role="tab"><span>Poular Features</span></li> 
-				<img src="https://techcrunch.com/wp-content/uploads/2018/03/gettyimages-705351545.jpg?w=730&crop=1">	
+					
 				</ul>				  	 
 				<div class="resp-tabs-container">
 
