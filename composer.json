@@ -20,7 +20,7 @@
         "paypal/rest-api-sdk-php": "^1.13",
         "spatie/laravel-medialibrary": "^7.5",
         "stripe/stripe-php": "^6.23",
-        "gd": "*"
+        "ext-gd": "*"
     },
     "require-dev": {
         "filp/whoops": "~2.0",
