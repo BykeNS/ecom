@@ -17,7 +17,7 @@ class AdminController extends Controller
      */
       public function __construct()
     {
-        $this->middleware('admin',['except' => ['getStripe']]);
+       // $this->middleware('admin',['except' => ['getStripe']]);
         // Load your objects
         $categories = Category::all();
 
