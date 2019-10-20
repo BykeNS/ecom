@@ -9,7 +9,7 @@ class Product extends Model
 
 
 {
-	 use Searchable;
+	 //use Searchable;
 
 
 	protected $table = 'products';

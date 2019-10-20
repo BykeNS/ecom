@@ -28,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/admin';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -46,13 +46,13 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    // protected function redirectTo()
-    // {
-    //     if (auth()->user()->role_id == 1) {
-    //         return'/admin';
-    //     }
-    //     return '/';
-    // }
+    protected function redirectTo()
+    {
+        if (auth()->user()->role_id == 1) {
+            return'/admin';
+        }
+        return '/';
+    }
 
     protected function validator(array $data)
     {

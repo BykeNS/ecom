@@ -17,7 +17,7 @@ class AdminController extends Controller
      */
       public function __construct()
     {
-       // $this->middleware('admin',['except' => ['getStripe']]);
+        $this->middleware('admin',['except' => ['getStripe']]);
         // Load your objects
         $categories = Category::all();
 
@@ -127,7 +127,7 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Product $products)
     {
         $this->validate($request, [
         'name' => 'required|max:255',
@@ -136,7 +136,7 @@ class AdminController extends Controller
         'image' => 'image',
         'slug' ,
     ]);
-        $products = Product::findOrFail($id);
+        //$products = Product::findOrFail($id);
         $products->name = $request->name;
         $products->description = $request->description;
         $products->price = $request->price;
@@ -151,13 +151,14 @@ class AdminController extends Controller
                }
 
          if($request->hasFile('image'))
-         {
+          {
             $image = $request->file('image');
             $filename = time() . '.' . $image->getClientOriginalExtension();
             Image::make($image)->resize(400, 300)->save( public_path('/images/' . $filename ) );
 
-        $products->image = $filename;
-        }
+           $products->image = $filename;
+          }
+
         }
 
         $products->update();
@@ -172,9 +173,9 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Product $products)
     {
-       $products=Product::findOrFail($id);
+       // $products=Product::findOrFail($id);
        $products->delete();
         return redirect('/admin')->with('danger',' Product '. $products->name .' has been deleted!!!');
     }

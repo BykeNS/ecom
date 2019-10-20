@@ -23,14 +23,15 @@ Route::get('/search','FrontEndHomeController@search')->name('search');
 Route::post('/charge', 'FrontEndHomeController@charge')->name('charge');
 
 
+
 Route::get('/contact','FrontEndHomeController@contact')->name('contact');
 //backend
 Route::get('/admin','AdminController@index')->name('admin');
 Route::get('/admin/edit/{products}','AdminController@edit')->name('admin.edit');
-Route::put('/admin/update/{id}','AdminController@update')->name('admin.update');
+Route::put('/admin/update/{products}','AdminController@update')->name('admin.update');
 Route::get('/admin/create','AdminController@create')->name('admin.create');
 Route::post('/admin/store','AdminController@store')->name('admin.store');
-Route::get('/admin/delete/{id}','AdminController@destroy')->name('admin.delete');
+Route::get('/admin/delete/{products}','AdminController@destroy')->name('admin.delete');
 //Route::get('/admin/show/{id}','AdminController@show')->name('admin.show');
 
 

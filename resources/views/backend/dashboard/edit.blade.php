@@ -8,7 +8,7 @@
 		{!! Form::model($products,['route' => ['admin.update', $products->id],'method' => 'PUT','files' =>'true']) !!}
 		<div class="col-md-8">   
        <div class="well">
-          <img src="/images/{{$products->image}}" class="img-thumbnail" style="width: 85px; height: 85px;"><br>
+          <img src="{{ asset('/images/'.$products->image)}}" class="img-thumbnail" style="width: 85px; height: 85px;"><br>
 
           {{ Form::label('name','Name:')}}
           {{ Form::text('name',null,['class' =>'form-control']) }}<br>
