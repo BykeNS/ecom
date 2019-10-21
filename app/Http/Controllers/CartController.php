@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Cart;
-use App\Product;
 use App\Category;
-use Carbon\Carbon;
+use App\Product;
+use Cart;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+
 class CartController extends Controller
 {
     /**
@@ -25,7 +24,6 @@ class CartController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    
 
     /**
      * Store a newly created resource in storage.
@@ -33,16 +31,14 @@ class CartController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function add( Request $request)
+    public function add(Request $request)
     {
-    
-         Cart::add($request->id, $request->name, 1, $request->price,$options = ['image'=>$request->image])->associate('App\Product');
-         
-            return redirect()->back()->with('success','Item '.$request->name.' was added to your cart!');
-                 
+
+        Cart::add($request->id, $request->name, 1, $request->price, $options = ['image' => $request->image])->associate('App\Product');
+
+        return redirect()->back()->with('success', 'Item ' . $request->name . ' was added to your cart!');
+
     }
-
-
 
     /**
      * Display the specified resource.
@@ -51,10 +47,10 @@ class CartController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function checkout()
-    {    
-        $products  = Product::all();  
-        $categories  = Category::all();
-        return view('checkout.checkout',compact('categories','products'));
+    {
+        $products = Product::all();
+        $categories = Category::all();
+        return view('checkout.checkout', compact('categories', 'products'));
     }
 
     /**
@@ -76,11 +72,11 @@ class CartController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $cart)
-    { 
-       
-       Cart::update($cart, $request->qty);
-       
-        return redirect('checkout')->with('success','Item '.$request->name.' was updated to your cart!');
+    {
+
+        Cart::update($cart, $request->qty);
+
+        return redirect('checkout')->with('success', 'Item ' . $request->name . ' was updated to your cart!');
     }
 
     /**
@@ -90,11 +86,10 @@ class CartController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function RemoveCart($rowid)
-    {  
-         
+    {
+
         Cart::remove($rowid);
-        return redirect()->back()->with('danger','Item  was removed from your cart!');
-        
+        return redirect()->back()->with('danger', 'Item  was removed from your cart!');
 
     }
 
